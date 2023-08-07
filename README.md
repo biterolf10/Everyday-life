@@ -1,6 +1,6 @@
 # Everyday Life
 
-Useful thing to search something in browser
+Useful thing to search something in browser\n
 **Features**
 1. Fast check github profiles
 2. Easily find music on youtube
