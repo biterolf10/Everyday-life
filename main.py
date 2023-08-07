@@ -34,9 +34,19 @@ def github():
     os.system("cls")
     link = 'https://github.com/'
     username = input('Write profile name in github: ')
+    advanced_mode = input('Enable advanced mode? (y/n): ')
 
     link += username
-    wbb.open(link)
+
+    if advanced_mode == 'y':
+        repositories_link = link + '?tab=repositories'
+        stars_link = link + '?tab=stars'
+        wbb.open(repositories_link)
+        wbb.open(stars_link)
+        wbb.open(link)
+
+    if advanced_mode != 'y':
+        wbb.open(link)
 
 
 
