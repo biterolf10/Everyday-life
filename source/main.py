@@ -2,18 +2,29 @@ import webbrowser as wbb
 import os
 
 
-def music():
+def youtube():
     os.system("cls")
-    music_name = input("Please write a music name ( you can leave it blank ): ")
-    music_author = input("Please write a music author ( you can leave it blank ): ")
+    search_music = input('Do you want find music? (y/n): ')
+    if search_music == 'y':
+        music_name = input("Please write a music name ( you can leave it blank ): ")
+        music_author = input("Please write a music author ( you can leave it blank ): ")
+        
+        link = (
+            "https://www.youtube.com/results?search_query="
+            + music_name
+            + "+ - +"
+            + music_author
+        )
+        wbb.open(link)
     
-    link = (
-        "https://www.youtube.com/results?search_query="
-        + music_name
-        + "+ - +"
-        + music_author
-    )
-    wbb.open(link)
+    if search_music != 'y':
+        search = input('Enter a search query: ')
+
+        link = (
+            "https://www.youtube.com/results?search_query="
+            + search
+        )
+        wbb.open(link)
 
 
 
@@ -61,13 +72,13 @@ def pinterest():
 
 def choose():
     choose = input('Which do you want to use:\n'
-                       + '1 - Find music on youtube\n'
+                       + '1 - Find vidoes on youtube\n'
                        + '2 - Translator\n'
                        + '3 - Find Github Profile\n'
                        + '4 - Pinterest Find By Tags\n\n'
                        )
     if choose == '1':
-        music()
+        youtube()
         
     if choose == '2':
         translator()
