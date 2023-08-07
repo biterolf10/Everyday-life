@@ -1,2 +1,3 @@
-# Everyday :ife
- Useful thing to search something in browser
+# Everyday Life
+
+Useful thing to search something in browser
