@@ -8,4 +8,4 @@ Useful thing to search something in browser
 4. Fast search on pinterest
 
 # Requirements
-You need just donwload python ( project made on 3.11 )!
+You need just donwload python ( project made on 3.11 )
