@@ -1,101 +1,145 @@
-import webbrowser as wbb
-import os
+from tkinter import *
+from webbrowser import open
 
+root = Tk()
 
-def youtube():
-    os.system("cls")
-    search_music = input('Do you want find music? (y/n): ')
-    if search_music == 'y':
-        music_name = input("Please write a music name ( you can leave it blank ): ")
-        music_author = input("Please write a music author ( you can leave it blank ): ")
-        
-        link = (
-            "https://www.youtube.com/results?search_query="
-            + music_name
-            + "+ - +"
-            + music_author
-        )
-        wbb.open(link)
-    
-    if search_music != 'y':
-        search = input('Enter a search query: ')
-
-        link = (
-            "https://www.youtube.com/results?search_query="
-            + search
-        )
-        wbb.open(link)
-
-
-
-def translator():
-    os.system("cls")
-    link = 'https://translate.google.com/?sl=auto&tl='
-    
-    language_to = input('To what language you want to translate? (write first 2 letters): ')
-    link += language_to + '&text='
-
-    text = input('What text you want to translate?')
-    link += text + '&op=translate'
-    wbb.open(link)
-
+canvas = Canvas(root, width=400, height=400)
+canvas.pack()
 
 
 def github():
-    os.system("cls")
-    link = 'https://github.com/'
-    username = input('Write profile name in github: ')
-    advanced_mode = input('Enable advanced mode? (y/n): ')
+    github_frame = Frame(root, bg="white")
+    github_frame.place(relwidth=1, relheight=0.25)
 
-    link += username
+    title_lable = Label(github_frame, text="Github")
+    title_lable.pack()
 
-    if advanced_mode == 'y':
-        repositories_link = link + '?tab=repositories'
-        stars_link = link + '?tab=stars'
-        wbb.open(repositories_link)
-        wbb.open(stars_link)
-        wbb.open(link)
+    github_profile = Entry(github_frame, bg="white")
+    github_profile.pack()
 
-    if advanced_mode != 'y':
-        wbb.open(link)
+    def open_github_NAM():
+        link = "https://github.com/"
+        username = github_profile.get()
 
+        link += username
+        open(link)
+
+    def open_github_reps():
+        link = "https://github.com/"
+        username = github_profile.get()
+
+        link += username
+        repositories_link = link + "?tab=repositories"
+        open(repositories_link)
+
+    enter_button_NAM = Button(
+        github_frame, bg="white", text="Open Github Profile", command=open_github_NAM
+    )
+    enter_button_NAM.pack()
+
+    enter_button_reps = Button(
+        github_frame,
+        bg="white",
+        text="Open Github Repositories",
+        command=open_github_reps,
+    )
+    enter_button_reps.pack()
 
 
 def pinterest():
-    link = 'https://pinterest.com'
-    tags = input('Write all tags to find images: ')
-    link += '/search/pins/?q=' + tags + '&rs=typed'
+    pinterest_frame = Frame(root, bg="white")
+    pinterest_frame.place(rely=0.285, relwidth=1, relheight=0.18)
 
-    wbb.open(link)
+    title_lable = Label(pinterest_frame, text="Pinterest")
+    title_lable.pack()
+
+    pinterest_tags = Entry(pinterest_frame, bg="white")
+    pinterest_tags.pack()
+
+    def pinterest_open():
+        link = "https://pinterest.com"
+        tags = pinterest_tags.get()
+        link += "/search/pins/?q=" + tags + "&rs=typed"
+
+        open(link)
+
+    open_w_tags = Button(
+        pinterest_frame,
+        bg="white",
+        text="Find Pinterest By Tags",
+        command=pinterest_open,
+    )
+    open_w_tags.pack()
 
 
+def translator():
+    translator_frame = Frame(root, bg="white")
+    translator_frame.place(rely=0.5, relwidth=1, relheight=0.22)
 
-def choose():
-    choose = input('Which do you want to use:\n'
-                       + '1 - Find vidoes on youtube\n'
-                       + '2 - Translator\n'
-                       + '3 - Find Github Profile\n'
-                       + '4 - Pinterest Find By Tags\n\n'
-                       )
-    if choose == '1':
-        youtube()
-        
-    if choose == '2':
-        translator()
+    title_lable = Label(translator_frame, text="Translator")
+    title_lable.pack()
 
-    if choose == '3':
-        github()
+    translator_text = Entry(translator_frame, bg="white")
+    translator_text.pack()
 
-    if choose == '4':
-        pinterest()
+    translator_language = Entry(translator_frame, bg="white")
+    translator_language.pack()
 
+    def translator_open():
+        link = "https://translate.google.com/?sl=auto&tl="
+
+        language_to = translator_language.get()
+        link += language_to + "&text="
+
+        text = translator_text.get()
+        link += text + "&op=translate"
+        open(link)
+
+    translate = Button(
+        translator_frame,
+        bg="white",
+        text="Translate",
+        command=translator_open,
+    )
+    translate.pack()
+
+
+def youtube():
+    youtube_frame = Frame(root, bg="white")
+    youtube_frame.place(rely=0.76, relwidth=1, relheight=0.22)
+
+    title_lable = Label(youtube_frame, text="Translator")
+    title_lable.pack()
+
+    youtube_find_text = Entry(youtube_frame, bg="white")
+    youtube_find_text.pack()
+
+    def search():
+        link = "https://www.youtube.com/results?search_query=" + youtube_find_text.get()
+        open(link)
+
+    search_button = Button(
+        youtube_frame,
+        bg="white",
+        text="Search",
+        command=search,
+    )
+    search_button.pack()
+
+
+root["bg"] = "#ccc"
+
+root.title("Everyday Life")
+root.geometry("400x400")
+root.resizable(False, False)
 
 
 def main():
-    while 1:
-        os.system("cls")
-        choose()
-
+    github()
+    pinterest()
+    translator()
+    youtube()
+    root.mainloop()
 
 
 if __name__ == "__main__":
