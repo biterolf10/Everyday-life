@@ -108,7 +108,7 @@ def youtube():
     youtube_frame = Frame(root, bg="white")
     youtube_frame.place(rely=0.76, relwidth=1, relheight=0.22)
 
-    title_lable = Label(youtube_frame, text="Translator")
+    title_lable = Label(youtube_frame, text="Youtube")
     title_lable.pack()
 
     youtube_find_text = Entry(youtube_frame, bg="white")
