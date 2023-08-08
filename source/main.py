@@ -17,14 +17,14 @@ def github():
     github_profile = Entry(github_frame, bg="white")
     github_profile.pack()
 
-    def open_github_NAM():
+    def find_profile_fun():
         link = "https://github.com/"
         username = github_profile.get()
 
         link += username
         open(link)
 
-    def open_github_reps():
+    def find_profile_reps_fun():
         link = "https://github.com/"
         username = github_profile.get()
 
@@ -32,18 +32,18 @@ def github():
         repositories_link = link + "?tab=repositories"
         open(repositories_link)
 
-    enter_button_NAM = Button(
-        github_frame, bg="white", text="Open Github Profile", command=open_github_NAM
+    find_profile = Button(
+        github_frame, bg="white", text="Open Github Profile", command=find_profile_fun
     )
-    enter_button_NAM.pack()
+    find_profile.pack()
 
-    enter_button_reps = Button(
+    find_profile_reps = Button(
         github_frame,
         bg="white",
         text="Open Github Repositories",
-        command=open_github_reps,
+        command=find_profile_reps_fun,
     )
-    enter_button_reps.pack()
+    find_profile_reps.pack()
 
 
 def pinterest():
